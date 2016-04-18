@@ -1,0 +1,19 @@
+{
+  "name": "github-firehose",
+  "version": "1.0.0",
+  "description": "For drinking from the hose",
+  "main": "index.js",
+  "scripts": {
+    "style": "jscs --fix .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.72.0",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "jscs": "^3.0.3"
+  }
+}
