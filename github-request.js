@@ -11,8 +11,7 @@ let options = {
   },
 };
 
-
 module.exports = (authToken, done) => {
-  options.headers.Authorization = "token " + authToken;
+  options.headers.Authorization = 'token ' + authToken;
   request(options, done);
-}
+};
