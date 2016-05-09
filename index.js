@@ -23,8 +23,8 @@ const responseHandler = (err, resp, body) => {
 
     const remainingRequests = +resp.headers['x-ratelimit-remaining'];
     if (remainingRequests) {
-      logger.log('debug', 'Remaining requests before limit hit: %j', remainingRequests);
-      setTimeout(makeRequest, 1000);
+      logger.info('Remaining requests before limit hit: ' + remainingRequests);
+      setTimeout(makeRequest, 250);
     }
   };
 

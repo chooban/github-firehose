@@ -11,10 +11,7 @@ const rolledFile = /stored-events-\d+\.json/;
 
 const rollFiles = () => {
   fs.readdir(outputDir, (err, files) => {
-    files = files.filter((value) => {
-      logger.debug('Testing ' + value);
-      return rolledFile.test(value);
-    });
+    files = files.filter((value) => (rolledFile.test(value)));
 
     if (files.length == 0) {
       logger.debug('No files, so writing the first one');
@@ -22,13 +19,16 @@ const rollFiles = () => {
     } else {
       logger.debug('Need to roll files');
 
-      let numbers = files.map((value) => (
-        +value.match(/\d+/)
-      )).sort();
+      let numbers = files.map((value) => {
+        logger.debug('Checking ' + value);
+        return +value.match(/\d+/);
+      }).sort((a, b) => (a - b));
 
-      const rollingNumber = numbers.pop();
+      logger.debug(numbers);
+      let rollingNumber = numbers.pop();
+      logger.debug('Current max file number is ' + rollingNumber);
 
-      if (rollingNumber == 9999) {
+      if (rollingNumber == 499) {
         // Erm, a bit shit
         process.exit(1);
       }
